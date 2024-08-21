@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Camilo
+  last_name: Cordoba
+  email: camilo@gmail.com
+  b_date: 2024-08-20
+  status: 0
+  contact_means: 2
+  phone: 3023055840
+  address: carr119#d-41
+  personal_description: Mi nombre es [Tu Nombre], y quiero presentarme y compartir quién soy, mis experiencias, y lo que me motiva. Siempre he sido curioso y entusiasta, buscando crecer tanto a nivel personal como profesional. Estudié [Tu Carrera] en [Tu Universidad], donde desarrollé una sólida base en [Áreas Relevantes]. He trabajado en [Tu Industria], ocupando roles como [Tu Primer Puesto] y [Tu Puesto Actual]. Mi experiencia me ha dotado de habilidades en [Habilidades Relevantes], lo que me permite aportar innovacion.
+
+two:
+  name: hayberth
+  last_name: sepulveda
+  email: hayberth@gmail.com
+  b_date: 2024-08-20
+  status: 0
+  contact_means: 1
+  phone: 3043055330
+  address: carr119#d-41
+  personal_description: Mi nombre es [Tu Nombre], y quiero presentarme y compartir quién soy, mis experiencias, y lo que me motiva. Siempre he sido curioso y entusiasta, buscando crecer tanto a nivel personal como profesional. Estudié [Tu Carrera] en [Tu Universidad], donde desarrollé una sólida base en [Áreas Relevantes]. He trabajado en [Tu Industria], ocupando roles como [Tu Primer Puesto] y [Tu Puesto Actual]. Mi experiencia me ha dotado de habilidades en [Habilidades Relevantes], lo que me permite aportar innovacion.

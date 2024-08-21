@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: root
+  password: ANDRES@715
+  host: localhost
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: kilauea_clients
+
+test:
+  <<: *default
+  database: kilauea_clients_test
+
+production:
+  <<: *default
+  database: clients_kilauea__production
+  username: root
+  password: <%= ENV["KILAUEA_DATABASE_PASSWORD"] %>
