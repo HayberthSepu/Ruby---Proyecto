@@ -8,3 +8,4 @@ json.contact_means client.contact_means
 json.phone client.phone
 json.address client.address
 json.personal_description client.personal_description
+json.is_old client.is_old

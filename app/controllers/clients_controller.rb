@@ -17,7 +17,8 @@ class ClientsController < ApplicationController
     # Crea un nuevo cliente con los parámetros permitidos.
     # Si se guarda correctamente, devuelve el cliente creado, de lo contrario, devuelve errores.
     def create
-        @client = Client.new(client_params)
+        @client = Client.new(client_params.merge(is_old: false))
+
         if @client.save
           render json: @client, status: :created, location: @client
         else
@@ -49,7 +50,7 @@ class ClientsController < ApplicationController
     # Define los parámetros permitidos para crear o actualizar un cliente.
     def client_params
         params.require(:client).permit(:name, :last_name, :email, :b_date, :status,
-                                       :contact_means, :phone, :address, :personal_description)
+                                       :contact_means, :phone, :address, :personal_description, :is_old)
     end
 
     # Método privado para buscar un cliente por ID antes de ciertas acciones.

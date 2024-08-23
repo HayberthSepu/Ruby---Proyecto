@@ -59,4 +59,14 @@ RSpec.describe Client, type: :model do
     expect(client).not_to be_valid
     expect(client.errors[:personal_description]).to include("can't be blank")
   end
+
+  it "marks a new client as recent (is_old: false)" do
+    client = build(:client)
+    expect(client.is_old).to be_falsey
+  end
+
+  it "correctly marks a client as old" do
+    client = create(:client, created_at: 2.days.ago)
+    expect(client.update(is_old: true)).to be_truthy
+  end
 end

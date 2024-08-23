@@ -10,6 +10,13 @@ RSpec.describe ClientsController, type: :controller do
     end
   end
 
+  describe "POST #create" do
+    it "creates a new client with is_old set to false" do
+      post :create, params: { client: attributes_for(:client) }, format: :json
+    expect(Client.last.is_old).to be_falsey
+    end
+  end
+
   describe 'GET #show' do
     it 'returns a success response' do
       get :show, params: { id: client.to_param }, format: :json
