@@ -38,6 +38,9 @@ group :development, :test do
 
   gem "rspec-rails", "~> 6.0"
 
+  gem "importmap-rails"
+
+
   gem "factory_bot_rails"
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
