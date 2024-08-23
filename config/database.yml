@@ -11,7 +11,7 @@ development:
   database: kilauea_clients
 
 test:
-  <<: *default
+  <<: *default 
   database: kilauea_clients_test
 
 production:

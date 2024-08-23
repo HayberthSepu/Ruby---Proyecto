@@ -1,7 +1,6 @@
 require "test_helper"
 
 class ClientsControllerTest < ActionDispatch::IntegrationTest
-  
   setup do
     @client = clients(:one, :two)  # Asegúrate de tener configuradas las fixtures correctamente
   end
@@ -15,6 +14,4 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
     get client_path(@client)
     assert_response :success
   end
-
-  
 end
