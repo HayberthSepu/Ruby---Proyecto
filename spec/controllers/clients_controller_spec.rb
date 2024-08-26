@@ -1,11 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe ClientsController, type: :controller do
-  let!(:client) { create(:client) }
+  let(:client) { create(:client) }
+
 
   describe 'GET #index' do
     it 'returns a success response' do
       get :index, format: :json
+      byebug
       expect(response).to be_successful
     end
   end
@@ -13,7 +15,7 @@ RSpec.describe ClientsController, type: :controller do
   describe "POST #create" do
     it "creates a new client with is_old set to false" do
       post :create, params: { client: attributes_for(:client) }, format: :json
-    expect(Client.last.is_old).to be_falsey
+      expect(Client.last.is_old).to be_falsey
     end
   end
 
@@ -50,9 +52,9 @@ RSpec.describe ClientsController, type: :controller do
 
   describe 'DELETE #destroy' do
     it 'destroys the requested client' do
-      expect do
-        delete :destroy, params: { id: client.to_param }, format: :json
-      end.to change(Client, :count).by(-1)
+      delete :destroy, params: { id: client.to_param }, format: :json
+      is_client_exist = Client.where(id: client.id)
+      expect(is_client_exist).to be_empty
     end
   end
 end

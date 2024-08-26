@@ -50,7 +50,7 @@ class ClientsController < ApplicationController
     # Define los parámetros permitidos para crear o actualizar un cliente.
     def client_params
         params.require(:client).permit(:name, :last_name, :email, :b_date, :status,
-                                       :contact_means, :phone, :address, :personal_description, :is_old)
+                                       :contact_means, :phone, :address, :personal_description)
     end
 
     # Método privado para buscar un cliente por ID antes de ciertas acciones.
