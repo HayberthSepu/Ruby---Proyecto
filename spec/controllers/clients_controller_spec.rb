@@ -1,14 +1,27 @@
 require 'rails_helper'
 
 RSpec.describe ClientsController, type: :controller do
-  let(:client) { create(:client) }
+  render_views
+  let!(:client) { create(:client) }
+  let(:client_attributes) { { id: client.id,
+                              name: client.name,
+                              last_name:  client.last_name,
+                              email:  client.email,
+                              b_date:  client.b_date.strftime('%Y-%m-%d'),
+                              status:  client.status,
+                              contact_means:  client.contact_means,
+                              phone:  client.phone,
+                              address:  client.address,
+                              personal_description:  client.personal_description,
+                              is_old: client.is_old } }
 
 
   describe 'GET #index' do
     it 'returns a success response' do
       get :index, format: :json
-      byebug
+
       expect(response).to be_successful
+      expect(JSON.parse(response.body).first).to eq(client_attributes.transform_keys(&:to_s))
     end
   end
 
@@ -16,6 +29,7 @@ RSpec.describe ClientsController, type: :controller do
     it "creates a new client with is_old set to false" do
       post :create, params: { client: attributes_for(:client) }, format: :json
       expect(Client.last.is_old).to be_falsey
+      expect(response.body).not_to be_empty
     end
   end
 

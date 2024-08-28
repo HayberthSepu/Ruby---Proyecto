@@ -4,9 +4,7 @@ class ClientsController < ApplicationController
 
     def index
         @clients = Client.active
-        render json: @clients
     end
-
     # GET /clients/:id
     # Muestra un cliente específico basado en el ID proporcionado.
 
