@@ -38,7 +38,7 @@ group :development, :test do
   gem "rubocop"
   gem "rubocop-rspec"
 
-  gem "rspec-rails", "~> 6.0"
+  gem "rspec-rails", "~> 7.0"
 
   gem "importmap-rails"
 
