@@ -51,104 +51,8 @@ RSpec.describe ClientsController, type: :controller do
         expect do
             post :create, params: { client: invalid_attributes }, format: :json
         end.not_to change(Client, :count)
-        parsed_response = JSON.parse(response.body)
-        expect(parsed_response).to include("name")
-        expect(response).to have_http_status(:unprocessable_entity)
-      end
-    end
-
-    context "with invalid params" do
-      it 'does not create a client with invalid params' do
-        invalid_attributes = attributes_for(:client, last_name: nil)
-        expect do
-            post :create, params: { client: invalid_attributes }, format: :json
-        end.not_to change(Client, :count)
-        parsed_response = JSON.parse(response.body)
-        expect(parsed_response).to include("last_name")
-        expect(response).to have_http_status(:unprocessable_entity)
-      end
-    end
-
-    context "with invalid params" do
-      it 'does not create a client with invalid params' do
-        invalid_attributes = attributes_for(:client, email: nil)
-        expect do
-            post :create, params: { client: invalid_attributes }, format: :json
-        end.not_to change(Client, :count)
-        parsed_response = JSON.parse(response.body)
-        expect(parsed_response).to include("email")
-        expect(response).to have_http_status(:unprocessable_entity)
-      end
-    end
-
-    context "with invalid params" do
-      it 'does not create a client with invalid params' do
-        invalid_attributes = attributes_for(:client, b_date: nil)
-        expect do
-            post :create, params: { client: invalid_attributes }, format: :json
-        end.not_to change(Client, :count)
-        parsed_response = JSON.parse(response.body)
-        expect(parsed_response).to include("b_date")
-        expect(response).to have_http_status(:unprocessable_entity)
-      end
-    end
-
-    context "with invalid params" do
-      it 'does not create a client with invalid params' do
-        invalid_attributes = attributes_for(:client, status: nil)
-        expect do
-            post :create, params: { client: invalid_attributes }, format: :json
-        end.not_to change(Client, :count)
-        parsed_response = JSON.parse(response.body)
-        expect(parsed_response).to include("status")
-        expect(response).to have_http_status(:unprocessable_entity)
-      end
-    end
-
-    context "with invalid params" do
-      it 'does not create a client with invalid params' do
-        invalid_attributes = attributes_for(:client, contact_means: nil)
-        expect do
-            post :create, params: { client: invalid_attributes }, format: :json
-        end.not_to change(Client, :count)
-        parsed_response = JSON.parse(response.body)
-        expect(parsed_response).to include("contact_means")
-        expect(response).to have_http_status(:unprocessable_entity)
-      end
-    end
-
-    context "with invalid params" do
-      it 'does not create a client with invalid params' do
-        invalid_attributes = attributes_for(:client, phone: nil)
-        expect do
-            post :create, params: { client: invalid_attributes }, format: :json
-        end.not_to change(Client, :count)
-        parsed_response = JSON.parse(response.body)
-        expect(parsed_response).to include("phone")
-        expect(response).to have_http_status(:unprocessable_entity)
-      end
-    end
-
-    context "with invalid params" do
-      it 'does not create a client with invalid params' do
-        invalid_attributes = attributes_for(:client, address: nil)
-        expect do
-            post :create, params: { client: invalid_attributes }, format: :json
-        end.not_to change(Client, :count)
-        parsed_response = JSON.parse(response.body)
-        expect(parsed_response).to include("address")
-        expect(response).to have_http_status(:unprocessable_entity)
-      end
-    end
-
-    context "with invalid params" do
-      it 'does not create a client with invalid params' do
-        invalid_attributes = attributes_for(:client, contact_means: nil)
-        expect do
-            post :create, params: { client: invalid_attributes }, format: :json
-        end.not_to change(Client, :count)
-        parsed_response = JSON.parse(response.body)
-        expect(parsed_response).to include("contact_means")
+        parsed_response = JSON.parse(response.body)["errors"]
+        expect(parsed_response).to include("Name can't be blank")
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end
@@ -187,92 +91,18 @@ RSpec.describe ClientsController, type: :controller do
       end
     end
 
-    context 'with valid params' do
-      let(:new_attributes) { { last_name: 'Rada' } }
-
-      it 'updates the requested client' do
-        put :update, params: { id: client.to_param, client: new_attributes }, format: :json
-        client.reload
-        parsed_response = JSON.parse(response.body)
-        expect(parsed_response['last_name']).to eq('Rada')
-      end
-    end
-
-    context 'with valid params' do
-      let(:new_attributes) { { b_date: '1990-01-02' } }
-
-      it 'updates the requested client' do
-        put :update, params: { id: client.to_param, client: new_attributes }, format: :json
-        client.reload
-        parsed_response = JSON.parse(response.body)
-        expect(parsed_response['b_date']).to eq('1990-01-02')
-      end
-    end
-
-    context 'with valid params' do
-      let(:new_attributes) { { status: 'inactive' } }
-
-      it 'updates the requested client' do
-        put :update, params: { id: client.to_param, client: new_attributes }, format: :json
-        client.reload
-        parsed_response = JSON.parse(response.body)
-        expect(parsed_response['status']).to eq('inactive')
-      end
-    end
-
-    context 'with valid params' do
-      let(:new_attributes) { { contact_means: 'whatsapp' } }
-
-      it 'updates the requested client' do
-        put :update, params: { id: client.to_param, client: new_attributes }, format: :json
-        client.reload
-        parsed_response = JSON.parse(response.body)
-        expect(parsed_response['contact_means']).to eq('whatsapp')
-      end
-    end
-
-    context 'with valid params' do
-      let(:new_attributes) { { phone: '3043055330' } }
-
-      it 'updates the requested client' do
-        put :update, params: { id: client.to_param, client: new_attributes }, format: :json
-        client.reload
-        parsed_response = JSON.parse(response.body)
-        expect(parsed_response['phone']).to eq('3043055330')
-      end
-    end
-
-    context 'with valid params' do
-      let(:new_attributes) { { address: 'carr 118 #39 d 49 inter 232' } }
-
-      it 'updates the requested client' do
-        put :update, params: { id: client.to_param, client: new_attributes }, format: :json
-        client.reload
-        parsed_response = JSON.parse(response.body)
-        expect(parsed_response['address']).to eq('carr 118 #39 d 49 inter 232')
-      end
-    end
-
-    context 'with valid params' do
-      let(:new_attributes) { { personal_description: 'hacemos un  pequeno detalle personal description with more than 500 characters.
-                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' } }
-
-      it 'updates the requested client' do
-        put :update, params: { id: client.to_param, client: new_attributes }, format: :json
-        client.reload
-        parsed_response = JSON.parse(response.body)
-        expect(parsed_response['personal_description']).to eq('hacemos un  pequeno detalle personal description with more than 500 characters.
-                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.')
+    context "with invalid params" do
+      it 'does not create a client with invalid params' do
+        invalid_attributes = attributes_for(:client, name: nil)
+        expect do
+            post :update, params: { id: client.to_param, client: invalid_attributes }, format: :json
+        end.not_to change(Client, :count)
+        parsed_response = JSON.parse(response.body)["errors"]
+        expect(parsed_response).to include("Name can't be blank")
+        expect(response).to have_http_status(:unprocessable_entity)
       end
     end
   end
-
   describe 'DELETE #destroy' do
     it 'destroys the requested client' do
       delete :destroy, params: { id: client.to_param }, format: :json

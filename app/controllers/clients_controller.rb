@@ -21,19 +21,19 @@ class ClientsController < ApplicationController
         if @client.save
           render json: @client, status: :created, location: @client
         else
-          render json: @client.errors, status: :unprocessable_entity
+          render json: { errors: @client.errors.full_messages }, status: :unprocessable_entity
         end
     end
     # PATCH/PUT /clients/:id
     # Actualiza un cliente específico basado en el ID proporcionado.
     # Si se actualiza correctamente, devuelve el cliente actualizado, de lo contrario, devuelve errores.
     def update
-        client = Client.find(params[:id])
+        @client = Client.find(params[:id])
 
-        if client.update(client_params)
-            render json: client
+        if @client.update(client_params)
+            render json: @client, status: :ok
         else
-            render json: client.errors, status: :unprocessable_entity
+            render json: { errors: @client.errors.full_messages }, status: :unprocessable_entity
         end
     end
 
