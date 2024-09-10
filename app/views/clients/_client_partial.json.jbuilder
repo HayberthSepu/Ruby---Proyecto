@@ -1,7 +1,7 @@
 json.id client.id
 json.name client.name
-json.last_name client.last_name
 json.email client.email
+json.last_name client.last_name
 json.b_date client.b_date
 json.status client.status
 json.contact_means client.contact_means
