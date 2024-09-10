@@ -39,7 +39,7 @@ group :development, :test do
   gem "rubocop-rspec"
   gem "bundler-audit"
 
-  gem "rspec-rails", "~> 6.0"
+  gem "rspec-rails", "~> 7.0"
 
   gem "importmap-rails"
 
