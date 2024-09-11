@@ -3,7 +3,7 @@ class ClientsController < ApplicationController
     # Lista todos los clientes que tienen el estado activo.
 
     def index
-        @clients = Client.active
+        @clients = Client.all
     end
     # GET /clients/:id
     # Muestra un cliente específico basado en el ID proporcionado.
